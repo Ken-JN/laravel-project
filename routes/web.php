@@ -25,3 +25,7 @@ Route::get('/admin/dashboard', function () {
 Route::get('/admin/about', function () {
     return view('admin.about');
 });
+
+Route::get('/admin/students', function () {
+    return view('admin.students');
+});
