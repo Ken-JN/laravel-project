@@ -1,24 +1,10 @@
-@php
-    $students = [
-        ['name' => 'Ardiansyah', 'NIS' => '240001', 'CLASS' => 'X PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Bima', 'NIS' => '240002', 'CLASS' => 'X PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Kenji', 'NIS' => '240003', 'CLASS' => 'X PPLG 2', 'Status' => 'Inactive'],
-        ['name' => 'Aldi', 'NIS' => '240004', 'CLASS' => 'X PPLG 2', 'Status' => 'Inactive'],
-        ['name' => 'Rafa', 'NIS' => '240005', 'CLASS' => 'XI PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Putra', 'NIS' => '240006', 'CLASS' => 'XI PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Putri', 'NIS' => '240007', 'CLASS' => 'XI PPLG 2', 'Status' => 'Active'],
-        ['name' => 'Alika', 'NIS' => '240008', 'CLASS' => 'XI PPLG 2', 'Status' => 'Inactive'],
-        ['name' => 'Pratama', 'NIS' => '240009', 'CLASS' => 'XII PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Bejo', 'NIS' => '240010', 'CLASS' => 'XII PPLG 1', 'Status' => 'Active'],
-    ];
-@endphp
 
 <x-admin.layout>
     <section class="col-span-1 sm:col-span-2 lg:col-span-4">
         <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
                 <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
-                    Students
+                    {{ $title }}
                 </h1>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                     List Student
@@ -61,7 +47,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($students as $student)
+                        @foreach ($listStudents as $student)
                             <tr class="border-b bg-white last:border-b-0 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                                 <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $loop->iteration }}</td>
                                 <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $student['name'] }}</td>
