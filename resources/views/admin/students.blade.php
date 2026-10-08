@@ -1,15 +1,15 @@
 @php
     $students = [
-        ['name' => 'Kenji', 'nis' => '240001', 'CLASS' => 'X PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Bima Pratama', 'nis' => '240002', 'CLASS' => 'X PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Citra Lestari', 'nis' => '240003', 'CLASS' => 'X PPLG 2', 'Status' => 'Active'],
-        ['name' => 'Daffa Ramadhan', 'nis' => '240004', 'CLASS' => 'X PPLG 2', 'Status' => 'Inactive'],
-        ['name' => 'Eka Safitri', 'nis' => '240005', 'CLASS' => 'XI PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Fajar Nugraha', 'nis' => '240006', 'CLASS' => 'XI PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Gita Maharani', 'nis' => '240007', 'CLASS' => 'XI PPLG 2', 'Status' => 'Active'],
-        ['name' => 'Hendra Wijaya', 'nis' => '240008', 'CLASS' => 'XI PPLG 2', 'Status' => 'Inactive'],
-        ['name' => 'Intan Permata', 'nis' => '240009', 'CLASS' => 'XII PPLG 1', 'Status' => 'Active'],
-        ['name' => 'Joko Susanto', 'nis' => '240010', 'CLASS' => 'XII PPLG 1', 'Status' => 'Active'],
+        ['name' => 'Ardiansyah', 'NIS' => '240001', 'CLASS' => 'X PPLG 1', 'Status' => 'Active'],
+        ['name' => 'Bima', 'NIS' => '240002', 'CLASS' => 'X PPLG 1', 'Status' => 'Active'],
+        ['name' => 'Kenji', 'NIS' => '240003', 'CLASS' => 'X PPLG 2', 'Status' => 'Inactive'],
+        ['name' => 'Aldi', 'NIS' => '240004', 'CLASS' => 'X PPLG 2', 'Status' => 'Inactive'],
+        ['name' => 'Rafa', 'NIS' => '240005', 'CLASS' => 'XI PPLG 1', 'Status' => 'Active'],
+        ['name' => 'Putra', 'NIS' => '240006', 'CLASS' => 'XI PPLG 1', 'Status' => 'Active'],
+        ['name' => 'Putri', 'NIS' => '240007', 'CLASS' => 'XI PPLG 2', 'Status' => 'Active'],
+        ['name' => 'Alika', 'NIS' => '240008', 'CLASS' => 'XI PPLG 2', 'Status' => 'Inactive'],
+        ['name' => 'Pratama', 'NIS' => '240009', 'CLASS' => 'XII PPLG 1', 'Status' => 'Active'],
+        ['name' => 'Bejo', 'NIS' => '240010', 'CLASS' => 'XII PPLG 1', 'Status' => 'Active'],
     ];
 @endphp
 
@@ -21,7 +21,7 @@
                     Students
                 </h1>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Manage student records and enrollment status.
+                    List Student
                 </p>
             </div>
             <button type="button" class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -65,7 +65,7 @@
                             <tr class="border-b bg-white last:border-b-0 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                                 <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $loop->iteration }}</td>
                                 <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $student['name'] }}</td>
-                                <td class="px-6 py-4">{{ $student['nis'] }}</td>
+                                <td class="px-6 py-4">{{ $student['NIS'] }}</td>
                                 <td class="px-6 py-4">{{ $student['CLASS'] }}</td>
                                 <td class="px-6 py-4">
                                     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium {{ $student['Status'] === 'Active' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300' }}">
