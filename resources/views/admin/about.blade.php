@@ -5,7 +5,7 @@
             </h1>
 
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                <a href="https://github.com/Ken-JN">Akun GitHub: Ken-JN</a>
+                    {{ $github }}
             </p>
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ $nama }}</p>
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ $hobby }}</p>
