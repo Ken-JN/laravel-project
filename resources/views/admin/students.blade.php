@@ -47,25 +47,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($listStudents as $student)
+                        @forelse ($students as $student)
                             <tr class="border-b bg-white last:border-b-0 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                                 <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $loop->iteration }}</td>
-                                <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $student['name'] }}</td>
-                                <td class="px-6 py-4">{{ $student['NIS'] }}</td>
-                                <td class="px-6 py-4">{{ $student['CLASS'] }}</td>
+                                <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $student->name }}</td>
+                                <td class="px-6 py-4">{{ $student->NIS }}</td>
+                                <td class="px-6 py-4">{{ $student->CLASSROOM }}</td>
                                 <td class="px-6 py-4">
-                                    <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium {{ $student['Status'] === 'Active' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300' }}">
-                                        {{ $student['Status'] }}
+                                    <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium {{ $student->Status === 'Active' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300' }}">
+                                        {{ $student->Status }}
                                     </span>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="5" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                                    No students found.
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
 
             <div class="flex items-center justify-between border-t border-gray-200 p-4 dark:border-gray-700">
-                <span class="text-sm text-gray-500 dark:text-gray-400">Showing <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">10</span></span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Showing <span class="font-semibold text-gray-900 dark:text-white">{{ $students->count() > 0 ? 1 : 0 }}-{{ $students->count() }}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{ $students->count() }}</span></span>
                 <div class="inline-flex rounded-md shadow-sm" role="group" aria-label="Pagination">
                     <button type="button" class="rounded-l-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400" disabled>Previous</button>
                     <button type="button" class="border-y border-gray-300 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 dark:border-gray-600 dark:bg-gray-600 dark:text-white">1</button>
