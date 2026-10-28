@@ -13,17 +13,19 @@ class ClassroomSeeder extends Seeder
      */
     public function run(): void
     {
+        Classroom::truncate();
+
         $classrooms = [
-            ['name' => 'X PPLG 1', 'major' => 'Pengembangan Perangkat Lunak dan Gim'],
-            ['name' => 'X PPLG 2', 'major' => 'Pengembangan Perangkat Lunak dan Gim'],
-            ['name' => 'XI PPLG 1', 'major' => 'Pengembangan Perangkat Lunak dan Gim'],
-            ['name' => 'XI PPLG 2', 'major' => 'Pengembangan Perangkat Lunak dan Gim'],
-            ['name' => 'XII PPLG 1', 'major' => 'Pengembangan Perangkat Lunak dan Gim'],
-            ['name' => 'XII PPLG 2', 'major' => 'Pengembangan Perangkat Lunak dan Gim'],
-            ['name' => 'X TJKT 1', 'major' => 'Teknik Jaringan Komputer dan Telekomunikasi'],
-            ['name' => 'X TJKT 2', 'major' => 'Teknik Jaringan Komputer dan Telekomunikasi'],
-            ['name' => 'XI TJKT 1', 'major' => 'Teknik Jaringan Komputer dan Telekomunikasi'],
-            ['name' => 'XII TJKT 1', 'major' => 'Teknik Jaringan Komputer dan Telekomunikasi'],
+            ['name' => '10 PPLG 1', 'major' => 'PPLG'],
+            ['name' => '11 PPLG 1', 'major' => 'PPLG'],
+            ['name' => '12 PPLG 1', 'major' => 'PPLG'],
+            ['name' => '10 ANIMASI 1', 'major' => 'ANIMASI'],
+            ['name' => '11 ANIMASI 1', 'major' => 'ANIMASI'],
+            ['name' => '12 ANIMASI 1', 'major' => 'ANIMASI'],
+            ['name' => '10 DKV 2', 'major' => 'DKV'],
+            ['name' => '11 DKV 2', 'major' => 'DKV'],
+            ['name' => '12 DKV 2', 'major' => 'DKV'],
+            ['name' => '10 PPLG 2', 'major' => 'PPLG'],
         ];
 
         foreach ($classrooms as $classroom) {

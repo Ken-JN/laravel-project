@@ -1,0 +1,75 @@
+<x-admin.layout>
+    <section class="col-span-1 sm:col-span-2 lg:col-span-4">
+        <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
+                    {{ $title }}
+                </h1>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    List of all registered classrooms
+                </p>
+            </div>
+            <button type="button" class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                Add classroom
+            </button>
+        </div>
+
+        <div class="relative overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800">
+            <div class="flex flex-col gap-4 border-b border-gray-200 p-4 dark:border-gray-700 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Classroom list</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">A list of all classrooms and majors.</p>
+                </div>
+                <label for="classroom-search" class="sr-only">Search classrooms</label>
+                <div class="relative w-full sm:w-64">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
+                        </svg>
+                    </div>
+                    <input id="classroom-search" type="search" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" placeholder="Search classrooms">
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+                    <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">No</th>
+                            <th scope="col" class="px-6 py-3">Class Name</th>
+                            <th scope="col" class="px-6 py-3">Major</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($classroom as $item)
+                            <tr class="border-b bg-white last:border-b-0 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
+                                <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $loop->iteration }}</td>
+                                <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $item->name }}</td>
+                                <td class="px-6 py-4">{{ $item->major }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                                    No classrooms found.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex items-center justify-between border-t border-gray-200 p-4 dark:border-gray-700">
+                <span class="text-sm text-gray-500 dark:text-gray-400">Showing <span class="font-semibold text-gray-900 dark:text-white">{{ $classroom->count() > 0 ? 1 : 0 }}-{{ $classroom->count() }}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{ $classroom->count() }}</span></span>
+                <div class="inline-flex rounded-md shadow-sm" role="group" aria-label="Pagination">
+                    <button type="button" class="rounded-l-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400" disabled>Previous</button>
+                    <button type="button" class="border-y border-gray-300 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 dark:border-gray-600 dark:bg-gray-600 dark:text-white">1</button>
+                    <button type="button" class="rounded-r-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400" disabled>Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</x-admin.layout>
+
