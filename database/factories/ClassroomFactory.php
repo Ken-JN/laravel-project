@@ -18,8 +18,20 @@ class ClassroomFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->randomElement(['X', 'XI', 'XII']) . ' ' . fake()->randomElement(['PPLG', 'TJKT', 'DKV']) . ' ' . fake()->numberBetween(1, 3),
-            'major' => fake()->randomElement(['Pengembangan Perangkat Lunak dan Gim', 'Teknik Jaringan Komputer dan Telekomunikasi', 'Desain Komunikasi Visual']),
+            'name' => fake()->unique()->randomElement([
+                '10 PPLG 1',
+                '10 PPLG 2',
+                '11 PPLG 1',
+                '11 PPLG 2',
+                '11 PPLG 3',
+                '12 PPLG 1',
+                '10 ANIMASI 1',
+                '11 ANIMASI 1',
+                '12 ANIMASI 1',
+                '10 DKV 1',
+                '11 DKV 1',
+            ]),
+            'major' => fake()->randomElement(['PPLG', 'ANIMASI', 'DKV']),
         ];
     }
 }
