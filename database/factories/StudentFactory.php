@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Classroom;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,9 +21,8 @@ class StudentFactory extends Factory
         return [
             'name' => fake()->name(),
             'nis' => fake()->randomNumber(5, true),
-            'classroom' => fake()->randomElement(['11 PPLG 1', '11 PPLG 2', '11 PPLG 3']),
+            'classroom_id' => Classroom::factory(),
             'address' => fake()->address(),
-            'status' => fake()->randomElement(['Active', 'Non Active']),
         ];
     }
 }

@@ -16,11 +16,13 @@ class DatabaseSeeder extends Seeder
     {
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            // 'name' => 'Test User',
+            // 'email' => 'test@example.com',
         ]);
 
-        Student::factory(15)->create(); // 15 data
-        Classroom::factory(10)->create();
+        Classroom::factory(12)
+        ->hasStudents(5)
+        ->create();
+        // Student::factory(15)->recycle($classrooms)->create();
     }
 }

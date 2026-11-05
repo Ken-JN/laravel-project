@@ -41,6 +41,7 @@
                             <th scope="col" class="px-6 py-3">No</th>
                             <th scope="col" class="px-6 py-3">Class Name</th>
                             <th scope="col" class="px-6 py-3">Major</th>
+                            <th scope="col" class="px-6 py-3">Students</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,10 +50,21 @@
                                 <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $loop->iteration }}</td>
                                 <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $item->name }}</td>
                                 <td class="px-6 py-4">{{ $item->major }}</td>
+                                <td class="px-6 py-4">
+                                    @if ($item->students->isNotEmpty())
+                                        <ol class="list-decimal list-inside space-y-1">
+                                            @foreach ($item->students as $student)
+                                                <li>{{ $student->name }}</li>
+                                            @endforeach
+                                        </ol>
+                                    @else
+                                        <span class="text-gray-400 italic">No students</span>
+                                    @endif
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                                <td colspan="4" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
                                     No classrooms found.
                                 </td>
                             </tr>

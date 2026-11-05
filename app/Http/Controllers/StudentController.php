@@ -11,7 +11,7 @@ class StudentController extends Controller
     {
         $title = 'Student List';
 
-        $students = Student::all();
+        $students = Student::with('classroom')->get();
 
         return view('admin.students', compact('title', 'students'));
     }

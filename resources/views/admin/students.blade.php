@@ -44,7 +44,6 @@
                             <th scope="col" class="px-6 py-3">NIS</th>
                             <th scope="col" class="px-6 py-3">Class</th>
                             <th scope="col" class="px-6 py-3">Address</th>
-                            <th scope="col" class="px-6 py-3">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,18 +51,13 @@
                             <tr class="border-b bg-white last:border-b-0 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                                 <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $loop->iteration }}</td>
                                 <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $student->name }}</td>
-                                <td class="px-6 py-4">{{ $student->nis ?? $student->NIS }}</td>
-                                <td class="px-6 py-4">{{ $student->classroom ?? $student->CLASSROOM }}</td>
+                                <td class="px-6 py-4">{{ $student->nis }}</td>
+                                <td class="px-6 py-4">{{ $student->classroom->name}}</td>
                                 <td class="px-6 py-4">{{ $student->address }}</td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium {{ ($student->status ?? $student->Status) === 'Active' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300' }}">
-                                        {{ $student->status ?? $student->Status }}
-                                    </span>
-                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                                <td colspan="5" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
                                     No students found.
                                 </td>
                             </tr>

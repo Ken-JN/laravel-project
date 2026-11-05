@@ -10,12 +10,11 @@ class ClassroomController extends Controller
     public function index()
     {
         $title = 'Classroom';
-        $classroom = Classroom::all();
+        $classroom = Classroom::with('students')->get();
 
         return view('admin.classroom', [
             'title' => $title,
             'classroom' => $classroom,
-            'classrooms' => $classroom,
         ]);
     }
 }

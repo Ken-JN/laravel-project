@@ -25,6 +25,7 @@ class ClassroomFactory extends Factory
                 '11 PPLG 2',
                 '11 PPLG 3',
                 '12 PPLG 1',
+                '12 PPLG 2',
                 '10 ANIMASI 1',
                 '11 ANIMASI 1',
                 '12 ANIMASI 1',
