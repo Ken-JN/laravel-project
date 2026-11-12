@@ -6,31 +6,31 @@
                     {{ $title }}
                 </h1>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    List of all registered classrooms
+                    List of all registered subjects
                 </p>
             </div>
-            <button type="button" class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button id="createSubjectModalButton" data-modal-target="createSubjectModal" data-modal-toggle="createSubjectModal" type="button" class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
-                Add classroom
+                Add subject
             </button>
         </div>
 
         <div class="relative overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800">
             <div class="flex flex-col gap-4 border-b border-gray-200 p-4 dark:border-gray-700 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Classroom list</h2>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">A list of all classrooms and majors.</p>
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Subject list</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">A list of all subjects and assigned teachers.</p>
                 </div>
-                <label for="classroom-search" class="sr-only">Search classrooms</label>
+                <label for="subject-search" class="sr-only">Search subjects</label>
                 <div class="relative w-full sm:w-64">
                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                         <svg class="h-5 w-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
                         </svg>
                     </div>
-                    <input id="classroom-search" type="search" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" placeholder="Search classrooms">
+                    <input id="subject-search" type="search" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400" placeholder="Search subjects">
                 </div>
             </div>
 
@@ -39,33 +39,31 @@
                     <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">No</th>
-                            <th scope="col" class="px-6 py-3">Class Name</th>
-                            <th scope="col" class="px-6 py-3">Major</th>
-                            <th scope="col" class="px-6 py-3">Students</th>
+                            <th scope="col" class="px-6 py-3">Subject Name</th>
+                            <th scope="col" class="px-6 py-3">Teachers</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($classroom as $item)
+                        @forelse ($subjects as $subject)
                             <tr class="border-b bg-white last:border-b-0 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                                 <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $loop->iteration }}</td>
-                                <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $item->name }}</td>
-                                <td class="px-6 py-4">{{ $item->major }}</td>
+                                <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $subject->name }}</td>
                                 <td class="px-6 py-4">
-                                    @if ($item->students->isNotEmpty())
+                                    @if ($subject->teachers->isNotEmpty())
                                         <ol class="list-decimal list-inside space-y-1">
-                                            @foreach ($item->students as $student)
-                                                <li>{{ $student->name }}</li>
+                                            @foreach ($subject->teachers as $teacher)
+                                                <li>{{ $teacher->name }}</li>
                                             @endforeach
                                         </ol>
                                     @else
-                                        <span class="text-gray-400 italic">No students</span>
+                                        <span class="text-gray-400 italic">No teachers</span>
                                     @endif
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
-                                    No classrooms found.
+                                <td colspan="3" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                                    No subjects found.
                                 </td>
                             </tr>
                         @endforelse
@@ -74,7 +72,7 @@
             </div>
 
             <div class="flex items-center justify-between border-t border-gray-200 p-4 dark:border-gray-700">
-                <span class="text-sm text-gray-500 dark:text-gray-400">Showing <span class="font-semibold text-gray-900 dark:text-white">{{ $classroom->count() > 0 ? 1 : 0 }}-{{ $classroom->count() }}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{ $classroom->count() }}</span></span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Showing <span class="font-semibold text-gray-900 dark:text-white">{{ $subjects->count() > 0 ? 1 : 0 }}-{{ $subjects->count() }}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{ $subjects->count() }}</span></span>
                 <div class="inline-flex rounded-md shadow-sm" role="group" aria-label="Pagination">
                     <button type="button" class="rounded-l-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400" disabled>Previous</button>
                     <button type="button" class="border-y border-gray-300 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 dark:border-gray-600 dark:bg-gray-600 dark:text-white">1</button>
@@ -83,5 +81,7 @@
             </div>
         </div>
     </section>
+
+    @include('admin.subjects.create')
 </x-admin.layout>
 

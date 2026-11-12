@@ -13,7 +13,9 @@ class DashboardController extends Controller
     {
         $title = 'Dashboard';
         $content = 'Selamat datang di page admin';
-        return view('admin.dashboard',['title' => $title, 'content' => $content]);
+
+        return view('admin.dashboard',
+        ['title' => $title, 'content' => $content]);
     }
 
     /**
