@@ -12,7 +12,7 @@ class SubjectController extends Controller
         $title = 'Subject List';
         $subjects = Subject::with('teachers')->get();
 
-        return view('admin.subjects', compact('title', 'subjects'));
+        return view('admin.subjects', ['title' => $title, 'subjects' => $subjects]);
     }
 }
 

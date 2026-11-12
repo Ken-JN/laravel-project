@@ -12,7 +12,8 @@ class TeacherController extends Controller
         $title = 'Teacher List';
         $teachers = Teacher::with('subject')->get();
 
-        return view('admin.teachers', compact('title', 'teachers'));
+        return view('admin.teachers',
+        ['title' => $title, 'teachers' => $teachers]);
     }
 }
 

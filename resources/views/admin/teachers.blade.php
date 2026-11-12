@@ -51,7 +51,7 @@
                                 <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $loop->iteration }}</td>
                                 <td class="whitespace-nowrap px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ $teacher->name }}</td>
                                 <td class="px-6 py-4">{{ $teacher->niy }}</td>
-                                <td class="px-6 py-4">{{ $teacher->subject->name ?? '-' }}</td>
+                                <td class="px-6 py-4">{{ $teacher->subject->name}}</td>
                                 <td class="px-6 py-4">{{ $teacher->start_date }}</td>
                             </tr>
                         @empty
